@@ -6,8 +6,32 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="PlanRem" Height="450" Width="800">
-    <StackPanel>
-        <Label>Hello World!</Label>
-        <Button>Click</Button>
-    </StackPanel>
+    <Grid>
+        <Label>
+            
+            <StackPanel Margin="-5,-5,-5,-5" Height="450" Width="85" Background="#1ea3ff">
+                <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Center">
+                    <Button HorizontalAlignment="Center" Background="Transparent" BorderThickness="0">
+                        <Image HorizontalAlignment="Center" Width="50" Source="https://pics.freeicons.io/uploads/icons/png/6540698631554126213-512.png"></Image>
+                    </Button>
+                    
+                    <AccessText  HorizontalAlignment="Center" Text="New"></AccessText>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="0,5,0,0" HorizontalAlignment="Center">
+                    <Button Background="Transparent" BorderThickness="0">
+                        <Image Width="30" Source="https://pics.freeicons.io/uploads/icons/png/13287388471540882596-512.png"></Image>
+                    </Button>
+                    
+                    <AccessText  Text="Old Plans"></AccessText>
+                </StackPanel>
+            </StackPanel>
+            
+        </Label>
+        
+    </Grid>
+
+
+
+
 </Window>
