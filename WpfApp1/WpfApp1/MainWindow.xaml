@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="PlanRem" Height="500" Width="800">
+        Title="PlanRem" Height="500" Width="800"
+        ResizeMode="NoResize">
     <Grid>
-        <Label>
+        <Grid>
             <StackPanel Name="mainStack" Orientation="Horizontal">
-                <StackPanel Margin="-5,-5,-5,-5" Height="500" Width="85" Background="#1ea3ff">
+                <StackPanel Margin="0,0,-5,0" Height="500" Width="85" Background="#1ea3ff">
                     <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Center">
                         <Button Name="newButton" Click="newButton_Click" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0">
                             <Image HorizontalAlignment="Center" Width="50" Source="https://pics.freeicons.io/uploads/icons/png/6540698631554126213-512.png"></Image>
@@ -28,28 +29,44 @@
                 </StackPanel>
                 <Grid Margin="10,0,0,0" Width="700" Height="430" Name="newGrid" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1.8*"/>
-                        <RowDefinition Height="6.5*"/>
+                        <RowDefinition Height="2.2*"/>
+                        <RowDefinition Height="8.5*"/>
                         <RowDefinition Height="1.6*"/>
-                        <RowDefinition Height="4.5*"/>
+                        <RowDefinition Height="5.5*"/>
                         <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1.5*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" FontSize="31">New</Label>
-                    <Calendar Grid.Row="1" Height="200"></Calendar>
+                    <Calendar Name="calendar" Grid.Row="1" Height="200"></Calendar>
                     <Label Grid.Row="2" FontSize="15">Title</Label>
-                    <TextBox Grid.Row="2" Width="600" Height="30"></TextBox>
+                    <TextBox Name="title" Grid.Row="2" Width="600" Height="30"></TextBox>
                     <Label Grid.Row="3" FontSize="15">Text</Label>
-                    <TextBox Grid.Row="3" Width="600" Height="110"></TextBox>
-                    <Button Name="submit" Grid.Row="4" Width="200" Height="30" Background="Transparent" BorderBrush="#1ea3ff" Foreground="#1ea3ff">Submit</Button>
+                    <TextBox Name="text" Grid.Row="3" Width="600" Height="110"></TextBox>
+                    <Button Name="submit" Click="submit_Click" Grid.Row="4" Width="200" Height="30" Background="Transparent" BorderBrush="#1ea3ff" Foreground="#1ea3ff">Submit</Button>
+                    <Label Name="doneText" Foreground="Green" Grid.Row="5" HorizontalAlignment="Center" Visibility="Collapsed">New PlanRem is created</Label>
+                    <Label Name="doneTextError" Foreground="Red" Grid.Row="5" HorizontalAlignment="Center" Visibility="Collapsed">Invalid Entry</Label>
+                </Grid>
+                <Grid Name="oldGrid" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="Red" Width="600" Grid.Row="0"></Grid>
+                    <Grid Background="Yellow" Width="600" Grid.Row="1"></Grid>
+                    <Grid Background="Green" Width="600" Grid.Row="2"></Grid>
+                    <Grid Background="Blue" Width="600" Grid.Row="3"></Grid>
+                    <Grid Background="Gray" Width="600" Grid.Row="4"></Grid>
                     
                 </Grid>
-                <Grid Name="oldGrid" Visibility="Collapsed"></Grid>
                 
                 
             </StackPanel>
             
             
-        </Label>
+        </Grid>
         
     </Grid>
 

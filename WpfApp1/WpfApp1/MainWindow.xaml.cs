@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,7 @@ namespace WpfApp1
             planBox.TextWrapping = TextWrapping.Wrap;
             newGrid.Children.Add(planBox);
             newGrid.Visibility = Visibility.Visible;
+            oldGrid.Visibility = Visibility.Collapsed;
 
 
         }
@@ -45,15 +47,31 @@ namespace WpfApp1
         private void oldsButton_Click(object sender, RoutedEventArgs e)
         {
             newGrid.Visibility = Visibility.Collapsed;
+            oldGrid.Visibility = Visibility.Visible;
+        }
+
+        private void submit_Click(object sender, RoutedEventArgs e)
+        {
+            if(text.Text != "" && title.Text != "" && calendar != null) {
+                PlanRem newPlanRem = new PlanRem(text.Text, calendar, title.Text);
+                doneText.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                doneTextError.Visibility = Visibility.Visible;
+            }
+            
+
         }
     }
 
     public class PlanRem
     {
         String text;
-        DateTime date;
+        Calendar date;
         String title;
-        public PlanRem(String text, DateTime date, String title)
+        
+        public PlanRem(String text, Calendar date, String title)
         {
             this.text = text;
             this.date = date;
