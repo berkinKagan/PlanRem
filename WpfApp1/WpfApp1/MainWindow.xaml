@@ -5,27 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="PlanRem" Height="450" Width="800">
+        Title="PlanRem" Height="500" Width="800">
     <Grid>
         <Label>
-            
-            <StackPanel Margin="-5,-5,-5,-5" Height="450" Width="85" Background="#1ea3ff">
-                <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Center">
-                    <Button HorizontalAlignment="Center" Background="Transparent" BorderThickness="0">
-                        <Image HorizontalAlignment="Center" Width="50" Source="https://pics.freeicons.io/uploads/icons/png/6540698631554126213-512.png"></Image>
-                    </Button>
-                    
-                    <AccessText  HorizontalAlignment="Center" Text="New"></AccessText>
-                </StackPanel>
+            <StackPanel Name="mainStack" Orientation="Horizontal">
+                <StackPanel Margin="-5,-5,-5,-5" Height="500" Width="85" Background="#1ea3ff">
+                    <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Center">
+                        <Button Name="newButton" Click="newButton_Click" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0">
+                            <Image HorizontalAlignment="Center" Width="50" Source="https://pics.freeicons.io/uploads/icons/png/6540698631554126213-512.png"></Image>
+                        </Button>
 
-                <StackPanel Orientation="Vertical" Margin="0,5,0,0" HorizontalAlignment="Center">
-                    <Button Background="Transparent" BorderThickness="0">
-                        <Image Width="30" Source="https://pics.freeicons.io/uploads/icons/png/13287388471540882596-512.png"></Image>
-                    </Button>
-                    
-                    <AccessText  Text="Old Plans"></AccessText>
+                        <AccessText  HorizontalAlignment="Center" Text="New"></AccessText>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="0,5,0,0" HorizontalAlignment="Center">
+                        <Button Name="oldsButton" Click="oldsButton_Click" Background="Transparent" BorderThickness="0">
+                            <Image Width="30" Source="https://pics.freeicons.io/uploads/icons/png/13287388471540882596-512.png"></Image>
+                        </Button>
+
+                        <AccessText  Text="Old Plans"></AccessText>
+                    </StackPanel>
                 </StackPanel>
+                <Grid Margin="10,0,0,0" Width="700" Height="430" Name="newGrid" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.8*"/>
+                        <RowDefinition Height="6.5*"/>
+                        <RowDefinition Height="1.6*"/>
+                        <RowDefinition Height="4.5*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" FontSize="31">New</Label>
+                    <Calendar Grid.Row="1" Height="200"></Calendar>
+                    <Label Grid.Row="2" FontSize="15">Title</Label>
+                    <TextBox Grid.Row="2" Width="600" Height="30"></TextBox>
+                    <Label Grid.Row="3" FontSize="15">Text</Label>
+                    <TextBox Grid.Row="3" Width="600" Height="110"></TextBox>
+                    <Button Name="submit" Grid.Row="4" Width="200" Height="30" Background="Transparent" BorderBrush="#1ea3ff" Foreground="#1ea3ff">Submit</Button>
+                    
+                </Grid>
+                <Grid Name="oldGrid" Visibility="Collapsed"></Grid>
+                
+                
             </StackPanel>
+            
             
         </Label>
         
