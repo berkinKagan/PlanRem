@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
+using System.Timers;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,13 +27,30 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static System.Timers.Timer aTimer;
         public MainWindow()
         {
             InitializeComponent();
-            
-            
-            
+
+
+
+            List<PlanRem> loadedData = LocalStorage.LoadData();
+
+            foreach (PlanRem item in loadedData)
+            {
+                testLabel.Content += item.title.ToString() + "\n";
+                testLabel.Content += item.text.ToString() + "\n";
+                testLabel.Content += item.date.ToString() + "\n";
+                testLabel.Content += "\n";
+            }
+
+
+
+
+
         }
+
+        
 
         private void newButton_Click(object sender, RoutedEventArgs e)
         {
@@ -52,8 +75,22 @@ namespace WpfApp1
 
         private void submit_Click(object sender, RoutedEventArgs e)
         {
-            if(text.Text != "" && title.Text != "" && calendar != null) {
-                PlanRem newPlanRem = new PlanRem(text.Text, calendar, title.Text);
+            if(text.Text != "" && title.Text != "" && calendar.SelectedDate.ToString() != "") {
+   
+         
+                PlanRem dataObject = new PlanRem {text = text.Text, title = title.Text ,  date = calendar.SelectedDate.ToString() };
+                
+                LocalStorage.SaveData(dataObject);
+
+                List<PlanRem> loadedData = LocalStorage.LoadData();
+                aTimer = new System.Timers.Timer(2000);
+                
+                testLabel.Content += dataObject.title.ToString() + "\n";
+                testLabel.Content += dataObject.text.ToString() + "\n";
+                testLabel.Content += dataObject.date.ToString() + "\n";
+                testLabel.Content += "\n";
+                aTimer.Enabled = true;
+                doneTextError.Visibility = Visibility.Collapsed;
                 doneText.Visibility = Visibility.Visible;
             }
             else
@@ -63,19 +100,64 @@ namespace WpfApp1
             
 
         }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+            LocalStorage.DeleteAllData();
+            testLabel.Content = string.Empty;
+        }
     }
+
 
     public class PlanRem
     {
-        String text;
-        Calendar date;
-        String title;
-        
-        public PlanRem(String text, Calendar date, String title)
+        public String text { get; set; }
+        public String title { get; set; }
+
+        public String date { get; set; }
+
+        public String toString()
         {
-            this.text = text;
-            this.date = date;
-            this.title = title;
+            String formatted = "";
+            formatted += title.ToString() + "\n";
+            formatted += text.ToString() + "\n";
+            formatted += date.ToString() + "\n";
+
+            return formatted;
         }
     }
+
+    public static class LocalStorage
+    {
+        public static List<PlanRem> LoadData()
+        {
+            if (File.Exists("data.json"))
+            {
+                string dataJson = File.ReadAllText("data.json");
+                return JsonConvert.DeserializeObject<List<PlanRem>>(dataJson);
+            }
+            return new List<PlanRem>();
+        }
+
+        public static void SaveData(PlanRem data)
+        {
+            List<PlanRem> dataList = LoadData();
+            dataList.Add(data);
+
+            string dataJson = JsonConvert.SerializeObject(dataList);
+            File.WriteAllText("data.json", dataJson);
+        }
+
+        public static void DeleteAllData()
+        {
+            List<PlanRem> dataList = LoadData();
+            while (dataList.Count > 0)
+            {
+                dataList.RemoveAt(0);
+            }
+            string dataJson = JsonConvert.SerializeObject(dataList);
+            File.WriteAllText("data.json", dataJson);
+        }
+    }
+
 }

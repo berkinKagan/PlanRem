@@ -28,3 +28,6 @@ C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.Generate
 C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
 C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
