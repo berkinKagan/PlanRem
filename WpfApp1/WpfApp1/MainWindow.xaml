@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+        
         mc:Ignorable="d"
         Title="PlanRem" Height="500" Width="800"
         ResizeMode="NoResize">
@@ -27,13 +28,13 @@
                         <AccessText  Text="Old Plans"></AccessText>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="0,25,0,0" HorizontalAlignment="Center">
-                        <Button Name="resetButton" Click="resetButton_Click" Background="Transparent" BorderThickness="0">
-                            <Image Width="35" Source="https://pics.freeicons.io/uploads/icons/png/21154659661577539692-512.png"></Image>
+                        <Button HorizontalAlignment="Center" Name="resetButton" Click="resetButton_Click" Background="Transparent" BorderThickness="0">
+                            <Image HorizontalAlignment="Center" Width="35" Source="https://pics.freeicons.io/uploads/icons/png/21154659661577539692-512.png"></Image>
                         </Button>
                         <AccessText  Text="Reset"></AccessText>
                     </StackPanel>
                 </StackPanel>
-                <Grid Margin="10,0,0,0" Width="700" Height="430" Name="newGrid" HorizontalAlignment="Center">
+                <Grid Visibility="Collapsed" Margin="10,0,0,0" Width="700" Height="430" Name="newGrid" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2.2*"/>
                         <RowDefinition Height="8.5*"/>
@@ -45,19 +46,37 @@
                     <Label Grid.Row="0" FontSize="31">New</Label>
                     <Calendar Name="calendar" Grid.Row="1" Height="200"></Calendar>
                     <Label Grid.Row="2" FontSize="15">Title</Label>
-                    <TextBox Name="title" Grid.Row="2" Width="600" Height="30"></TextBox>
+                    <TextBox  Name="title" Grid.Row="2" Width="600" Height="30"></TextBox>
                     <Label Grid.Row="3" FontSize="15">Text</Label>
-                    <TextBox Name="text" Grid.Row="3" Width="600" Height="110"></TextBox>
+                    <TextBox Name="text" TextWrapping="Wrap" Grid.Row="3" Width="600" Height="110"></TextBox>
                     <Button Name="submit" Click="submit_Click" Grid.Row="4" Width="200" Height="30" Background="Transparent" BorderBrush="#1ea3ff" Foreground="#1ea3ff">Submit</Button>
                     <Label Name="doneText" Foreground="Green" Grid.Row="5" HorizontalAlignment="Center" Visibility="Collapsed">New PlanRem is created</Label>
                     <Label Name="doneTextError" Foreground="Red" Grid.Row="5" HorizontalAlignment="Center" Visibility="Collapsed">Invalid Entry</Label>
                 </Grid>
-                <Grid Name="oldGrid" Visibility="Collapsed">
+                <Grid Name="oldGrid" Visibility="Visible">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
-                        
+                        <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
-                    <Label Margin="10" Grid.Row="0" Name="testLabel"></Label>
+                    <Label Margin="10" FontSize="31" Width="700" Grid.Row="0">My Plans</Label>
+                    <Grid Margin="8"  Grid.Row="1">
+                        
+                        <ScrollViewer>
+                            <Label Name="cont" Width="700">
+                                <StackPanel x:Name="contentPanel">
+                                    
+
+
+                                </StackPanel>
+                            </Label>
+                            
+                        </ScrollViewer>
+                        
+                        
+                        
+                    </Grid>
+                    
+                    
 
                 </Grid>
                 

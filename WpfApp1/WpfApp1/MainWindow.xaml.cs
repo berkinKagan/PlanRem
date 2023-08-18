@@ -19,6 +19,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Reflection.Emit;
+using System.Windows.Threading;
 
 namespace WpfApp1
 {
@@ -27,21 +29,20 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static System.Timers.Timer aTimer;
+        private DispatcherTimer timer;
         public MainWindow()
         {
             InitializeComponent();
 
+
+            
 
 
             List<PlanRem> loadedData = LocalStorage.LoadData();
 
             foreach (PlanRem item in loadedData)
             {
-                testLabel.Content += item.title.ToString() + "\n";
-                testLabel.Content += item.text.ToString() + "\n";
-                testLabel.Content += item.date.ToString() + "\n";
-                testLabel.Content += "\n";
+                createPlanGrid(item.title.ToString(), item.text.ToString(), item.date.ToString());
             }
 
 
@@ -83,28 +84,104 @@ namespace WpfApp1
                 LocalStorage.SaveData(dataObject);
 
                 List<PlanRem> loadedData = LocalStorage.LoadData();
-                aTimer = new System.Timers.Timer(2000);
+
+                createPlanGrid(title.Text, text.Text, calendar.SelectedDate.ToString());
                 
-                testLabel.Content += dataObject.title.ToString() + "\n";
-                testLabel.Content += dataObject.text.ToString() + "\n";
-                testLabel.Content += dataObject.date.ToString() + "\n";
-                testLabel.Content += "\n";
-                aTimer.Enabled = true;
                 doneTextError.Visibility = Visibility.Collapsed;
                 doneText.Visibility = Visibility.Visible;
+                timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(2); // 5 seconds
+                timer.Tick += Timer_Tick;
+                timer.Start();
             }
             else
             {
                 doneTextError.Visibility = Visibility.Visible;
+                timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(2); // 5 seconds
+                timer.Tick += Timer_Tick;
+                timer.Start();
             }
             
+            
+
 
         }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            doneText.Visibility = Visibility.Collapsed;
+            doneTextError.Visibility = Visibility.Collapsed;
+            timer.Stop();
+        }
+
 
         private void resetButton_Click(object sender, RoutedEventArgs e)
         {
             LocalStorage.DeleteAllData();
-            testLabel.Content = string.Empty;
+            cont.Content = null;
+        }
+
+        public void createPlanGrid(String title, String text, String date)
+        {
+            /*
+             <Grid Margin="0,10,0,0" Name="aPlan">
+                                <Border Padding="10" BorderThickness="1" BorderBrush="LightGray">
+                                    <StackPanel Name="planStack">
+                                        <TextBlock Name="titleBlock" Margin="0,7,0,0" FontSize="25">Title</TextBlock>
+                                        <TextBlock x:Name="testLabel" Margin="0,7,0,0" FontSize="15">Text</TextBlock>
+                                        <TextBlock x:Name="dateBlock" Margin="0,7,0,0" FontSize="15">06/12/2023</TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+             */
+
+            Grid aPlan = new Grid();
+            aPlan.Margin = new Thickness(0,10,0,0);
+
+            Border border = new Border();
+            border.Padding = new Thickness(10);
+            border.BorderThickness = new Thickness(1);
+            border.BorderBrush = Brushes.LightGray;
+            
+
+            StackPanel planStack = new StackPanel();
+
+            TextBlock titleBlock = new TextBlock();
+            titleBlock.Margin = new Thickness(0,7,0,0);
+            titleBlock.FontSize = 25;
+
+            TextBlock textBlock = new TextBlock();
+            textBlock.Margin = new Thickness(0, 7, 0, 0);
+            titleBlock.FontSize = 15;
+
+            TextBlock dateBlock = new TextBlock();
+            dateBlock.Margin = new Thickness(0, 7, 0, 0);
+            dateBlock.FontSize = 15;
+
+            titleBlock.TextWrapping = TextWrapping.Wrap;
+            textBlock.TextWrapping= TextWrapping.Wrap;
+            dateBlock.TextWrapping= TextWrapping.Wrap;
+
+            titleBlock.Text = title;
+            textBlock.Text = text;
+            dateBlock.Text = date;
+
+            titleBlock.Width = 600;
+            textBlock.Width = 600;
+            dateBlock.Width = 600;
+
+            titleBlock.FontWeight = FontWeights.Bold;
+
+            planStack.Children.Add(titleBlock);
+            planStack.Children.Add(textBlock);
+            planStack.Children.Add(dateBlock);
+
+            border.Child = planStack;
+            aPlan.Children.Add(border);
+            
+            contentPanel.Children.Add(aPlan);
+           
+
         }
     }
 
