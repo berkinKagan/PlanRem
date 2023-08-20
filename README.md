@@ -31,7 +31,7 @@ Launch the application from the desktop or start menu.
 
 The main interface will display a list of your saved plans or an empty list if no plans have been created yet.
 
-To create a new plan, click the "New Plan" button. This will open a dialog where you can enter the plan's title and description.
+To create a new plan, click the "New Plan" button. This will open a dialogue where you can enter the plan's title and description.
 
 After creating the plan, it will appear in the list of saved plans.
 
@@ -58,4 +58,3 @@ If you encounter any issues or have questions about the application, feel free t
 #7. License
 The Plan Saver Desktop App is released under the MIT License. You are free to use, modify, and distribute the software in accordance with the terms of the license.
 
-Thank you for choosing the Plan Saver Desktop App! We hope this application helps you organize and manage your plans effectively. If you have any suggestions or feedback, please don't hesitate to reach out.
