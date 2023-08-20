@@ -34,9 +34,9 @@
                         <AccessText  Text="Reset"></AccessText>
                     </StackPanel>
                 </StackPanel>
-                <Grid Visibility="Collapsed" Margin="10,0,0,0" Width="700" Height="430" Name="newGrid" HorizontalAlignment="Center">
+                <Grid Visibility="Visible" Margin="10,0,0,0" Width="700" Height="430" Name="newGrid" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2.2*"/>
+                        <RowDefinition Height="2.4*"/>
                         <RowDefinition Height="8.5*"/>
                         <RowDefinition Height="1.6*"/>
                         <RowDefinition Height="5.5*"/>
@@ -53,13 +53,16 @@
                     <Label Name="doneText" Foreground="Green" Grid.Row="5" HorizontalAlignment="Center" Visibility="Collapsed">New PlanRem is created</Label>
                     <Label Name="doneTextError" Foreground="Red" Grid.Row="5" HorizontalAlignment="Center" Visibility="Collapsed">Invalid Entry</Label>
                 </Grid>
-                <Grid Name="oldGrid" Visibility="Visible">
+                <Grid Name="oldGrid" Visibility="Collapsed">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.1*"/>
                         <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
+                    
                     <Label Margin="10" FontSize="31" Width="700" Grid.Row="0">My Plans</Label>
-                    <Grid Margin="8"  Grid.Row="1">
+                    <Border Grid.Row="1" Margin="0" BorderThickness="1" Height="1" Width="723" BorderBrush="LightGray"></Border>
+                    <Grid Margin="8,0,8,8"  Grid.Row="2">
                         
                         <ScrollViewer>
                             <Label Name="cont" Width="700">
