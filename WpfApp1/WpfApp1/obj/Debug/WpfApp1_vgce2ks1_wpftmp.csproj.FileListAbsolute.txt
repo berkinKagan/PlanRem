@@ -1,0 +1,9 @@
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1_vgce2ks1_wpftmp.csproj.AssemblyReference.cache
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1_vgce2ks1_wpftmp.csproj.GenerateResource.cache
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1_vgce2ks1_wpftmp.csproj.CoreCompileInputs.cache
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\Ateş\Desktop\PlanRem\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
